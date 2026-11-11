@@ -1,0 +1,4 @@
+# Copyright (c) 2026 Pasqal. Licensed under the Pasqal Open-Source Software License
+# (MIT-derived); see LICENSE in the repository root.
+# Prefect, in a venv of its own beside QFw's.
+prefect==3.9.2

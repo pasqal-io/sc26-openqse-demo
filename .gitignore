@@ -1,0 +1,7 @@
+# Copyright (c) 2026 Pasqal. Licensed under the Pasqal Open-Source Software License
+# (MIT-derived); see LICENSE in the repository root.
+__pycache__/
+# The demo's output, and a QFw-SLURM-Cluster checkout if kept here.
+/logs/
+/results/
+/cluster

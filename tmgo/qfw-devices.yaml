@@ -1,0 +1,36 @@
+# Copyright (c) 2026 Pasqal. Licensed under the Pasqal Open-Source Software License
+# (MIT-derived); see LICENSE in the repository root.
+# The Pasqal devices the sweep runs on, in QFw's device-access format (QFw's
+# examples/qfw_pulser_device_access.yaml, plus FRESNEL_CAN1). tmgo-qfw.sh fills in
+# the project. A QPU's jobs queue behind other users', so it waits up to 48 hours;
+# QFw cancels a job that has not finished by then.
+qpus:
+  pasqal-emu-free: &pasqal
+    provider: pasqal
+    provider-device-id: EMU_FREE
+    resource-type: PasqalCloud
+    url: https://apis.pasqal.cloud
+    project-id: QFW_PASQAL_PROJECT_ID
+    credential-provider: pasqal-no-secret
+    libraries: [qrmi, qdmi]
+    preference: qrmi
+    execution-owner: qrmi
+    caps:
+      get_backend_info: [qrmi, qdmi]
+      get_device_info: [qdmi]
+      run_circuit: [qrmi, qdmi]
+      get_task_timing: [qrmi, qdmi]
+      get_task_metadata: [qrmi, qdmi]
+    job-timeout-seconds: 1800
+  pasqal-fresnel-can1:
+    <<: *pasqal
+    provider-device-id: FRESNEL_CAN1
+    job-timeout-seconds: 172800
+  pasqal-fresnel:
+    <<: *pasqal
+    provider-device-id: FRESNEL
+    job-timeout-seconds: 172800
+
+credential-providers:
+  pasqal-no-secret:
+    type: no-secret
